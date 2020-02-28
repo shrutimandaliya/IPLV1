@@ -10,14 +10,13 @@ public class Deliveries {
     private String batsman;
     private String nonStriker;
     private String bowler;
-    public int getIsSuperOver() {
-        return isSuperOver;
-    }
-
-    public void setIsSuperOver(int isSuperOver) {
-        this.isSuperOver = isSuperOver;
-    }
-
+    private int penaltyRuns;
+    private int batsmanRuns;
+    private int extraRuns;
+    private int totalRuns;
+    private String playerDismissed;
+    private String dismissalKind;
+    private String fielder;
     private int isSuperOver;
     private int wideRuns;
     private int byeRuns;
@@ -164,6 +163,14 @@ public class Deliveries {
         return playerDismissed;
     }
 
+    public int getIsSuperOver() {
+        return isSuperOver;
+    }
+
+    public void setIsSuperOver(int isSuperOver) {
+        this.isSuperOver = isSuperOver;
+    }
+
     public void setPlayerDismissed(String playerDismissed) {
         this.playerDismissed = playerDismissed;
     }
@@ -183,14 +190,5 @@ public class Deliveries {
     public void setFielder(String fielder) {
         this.fielder = fielder;
     }
-
-    private int penaltyRuns;
-    private int batsmanRuns;
-    private int extraRuns;
-    private int totalRuns;
-    private String playerDismissed;
-    private String dismissalKind;
-    private String fielder;
-
 
 }

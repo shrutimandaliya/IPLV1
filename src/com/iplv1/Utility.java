@@ -1,5 +1,6 @@
 package com.iplv1;
 
+import static com.iplv1.Constant.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -8,61 +9,19 @@ import java.util.List;
 
 public class Utility {
 
-
-    private static final int ID_INDEX = 0;
-    private static final int SEASON_INDEX = 1;
-    private static final int CITY_INDEX = 2;
-    private static final int DATE_INDEX = 3;
-    private static final int TEAM1_INDEX = 4;
-    private static final int TEAM2_INDEX = 5;
-    private static final int TOSS_WINNER = 6 ;
-    private static final int TOSS_DECISION_INDEX = 7;
-    private static final int RESULT_INDEX = 8;
-    private static final int DL_APPLIED_INDEX = 9;
-    private static final int WINNER_INDEX = 10;
-    private static final int WIN_BY_RUNS_INDEX = 11;
-    private static final int WIN_BY_WICKETS_INDEX = 12;
-    private static final int PLAYER_OF_MATCH_INDEX = 13;
-    private static final int VENUE_INDEX = 14;
-    private static final int UMPIRE1_INDEX = 15;
-    private static final int UMPIRE2_INDEX = 16;
-
-
-    private static final int MATCH_ID_INDEX = 0;
-    private static final int INNING_INDEX = 1;
-    private static final int BATTING_TEAM_INDEX = 2;
-    private static final int BOWLING_TEAM_INDEX = 3;
-    private static final int OVER_INDEX = 4;
-    private static final int BALL_INDEX = 5;
-    private static final int BATSMAN_INDEX = 6;
-    private static final int NON_STRIKER_INDEX = 7;
-    private static final int BOWLER_INDEX = 8;
-    private static final int IS_SUPER_OVER_INDEX = 9;
-    private static final int WIDE_RUNS_INDEX = 10;
-    private static final int BYE_RUNS_INDEX = 11;
-    private static final int LEGBYE_RUNS_INDEX = 12;
-    private static final int NOBALL_RUNS_INDEX = 13;
-    private static final int PENALTY_RUNS_INDEX = 14;
-    private static final int BATSMAN_RUNS_INDEX = 15;
-    private static final int EXTRA_RUNS_INDEX = 16;
-    private static final int TOTAL_RUNS_INDEX = 17;
-    private static final int PLAYER_DISMISSED_INDEX = 18;
-    private static final int DISMISSAL_KIND_INDEX = 19;
-    private static final int FIELDER_INDEX = 20;
-
     public BufferedReader fileReader(String filePath) throws IOException {
         String path=filePath;
         BufferedReader fileReader = new BufferedReader(new FileReader(path));
         String firstLine = fileReader.readLine();
         return fileReader;
     }
+
     public List<Match> getmatchReader() throws IOException {
 
-        String filePath="matches.csv";
-        BufferedReader matchReader=fileReader(filePath);
+        BufferedReader matchReader=fileReader(MATCHPATH);
         String line = "";
         List<Match> match=new ArrayList<Match>();
-        while ((line = matchReader.readLine()) != null)  //returns a boolean value
+        while ((line = matchReader.readLine()) != null)
         {
             String[] row = line.replaceAll(","," ,").split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
             Match matchList=new Match();
@@ -87,12 +46,12 @@ public class Utility {
 
             match.add(matchList);
         }
-//        System.out.println(match);
         return match;
     }
+
     public List<Deliveries> getDeliveryReader() throws IOException {
-        String filePath="delivery.csv";
-        BufferedReader deliReader=fileReader(filePath);
+
+        BufferedReader deliReader=fileReader(DELIVERYPath);
         String line = "";
 
         List<Deliveries> deliveries=new ArrayList<Deliveries>();
@@ -100,7 +59,6 @@ public class Utility {
         {
             String[] row = line.replaceAll(",",", ").split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
 
-//            System.out.print(row+" ");
             Deliveries deliList = new Deliveries();
 
             deliList.setMatchId(Integer.parseInt(row[MATCH_ID_INDEX].trim()));
@@ -128,6 +86,5 @@ public class Utility {
             deliveries.add(deliList);
         }
         return deliveries;
-//        System.out.println(deliveries.get(11).getFielder());
     }
 }

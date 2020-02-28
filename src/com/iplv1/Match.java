@@ -95,9 +95,7 @@ public class Match {
         return dlApplied;
     }
 
-    public void setDlApplied(int dlApplied) {
-        this.dlApplied = dlApplied;
-    }
+    public void setDlApplied(int dlApplied) { this.dlApplied = dlApplied; }
 
     public String getWinner() {
         return winner;
@@ -154,6 +152,5 @@ public class Match {
     public void setUmpire2(String umpire2) {
         this.umpire2 = umpire2;
     }
-
 
 }
